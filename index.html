@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jan Kuchyňka – osobní poradce pro pojištění a finance, Olomouc</title>
+<meta name="description" content="Osobní poradce pro pojištění v Olomouci. Vozidla, dům a domácnost, život, cestování, penzijní spoření. Krapkova 1159/3, tel. +420 608 777 597.">
+<meta name="author" content="Jan Kuchyňka">
+<meta name="theme-color" content="#151a2d">
+<meta property="og:title" content="Jan Kuchyňka – osobní poradce pro pojištění, Olomouc">
+<meta property="og:description" content="Pojištění má chránit to, na čem vám v životě opravdu záleží – lidsky, srozumitelně a bez háčků.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/jan-kuchynka.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"InsuranceAgency","name":"Jan Kuchyňka – pojišťovací poradce","image":"img/jan-kuchynka.webp","telephone":"+420608777597","email":"jan.kuchynka@generaliceska.cz",
+"address":{"@type":"PostalAddress","streetAddress":"Krapkova 1159/3","addressLocality":"Olomouc","postalCode":"779 00","addressCountry":"CZ"},
+"openingHoursSpecification":[
+{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday"],"opens":"08:00","closes":"17:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Wednesday","opens":"08:00","closes":"16:30"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Thursday","opens":"07:30","closes":"18:00"},
+{"@type":"OpeningHoursSpecification","dayOfWeek":"Friday","opens":"08:00","closes":"16:00"}]}
+</script>
+<style>
+:root{
+  --navy:#151a2d; --navy2:#1f2a4d; --blue:#22388a; --accent:#e0891f; --accent2:#f3a640;
+  --cream:#f6f3ec; --card:#fff; --ink:#151a2d; --muted:#5d6273; --line:#e6e1d6;
+  --r:22px; --shadow:0 10px 30px rgba(21,26,45,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;font-family:Manrope,system-ui,sans-serif;color:var(--ink);background:var(--cream);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.12;margin:0 0 .4em;letter-spacing:-.01em}
+h2{font-size:clamp(30px,4.2vw,46px)}
+h3{font-size:21px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+section{padding:88px 0}
+.eyebrow{font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:13px;color:var(--accent);margin-bottom:10px}
+.lead{color:var(--muted);max-width:680px;font-size:18px}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:13px 24px;font-weight:700;text-decoration:none;border:2px solid transparent;cursor:pointer;font:inherit;font-weight:700;transition:transform .15s,opacity .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn-accent{background:var(--accent);color:var(--navy)}
+.btn-ghost{border-color:rgba(255,255,255,.35);color:#fff;background:transparent}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn-line{border-color:var(--navy);color:var(--navy);background:transparent;padding:8px 18px;font-size:15px}
+.btn-line:hover{background:var(--navy);color:#fff}
+.btn-navy{background:var(--navy);color:#fff}
+svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* header */
+header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-family:Fraunces,serif;font-weight:700;font-size:22px;text-decoration:none}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;align-items:center}
+.nav ul a{text-decoration:none;font-weight:500;font-size:15px}
+.nav ul a:hover{color:var(--blue)}
+.nav .btn{padding:9px 20px;font-size:15px}
+.burger{display:none;background:none;border:0;padding:8px;cursor:pointer}
+@media(max-width:900px){
+  .burger{display:block}
+  .nav ul{display:none;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--cream);padding:18px 22px 24px;gap:16px;border-bottom:1px solid var(--line);align-items:flex-start}
+  .nav ul.open{display:flex}
+}
+
+/* hero */
+.hero{background:var(--navy);color:#f5efe4;padding:70px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:end}
+.tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tag{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700}
+.tag.gold{background:var(--accent);color:var(--navy)}
+.tag.out{border:1px solid rgba(255,255,255,.3)}
+.hero h1{font-size:clamp(52px,8vw,96px);color:#f5efe4}
+.hero p.motto{font-size:21px;max-width:520px;margin:0 0 30px}
+.hero p.motto em{font-style:normal;color:var(--accent2)}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.socials{display:flex;gap:10px;padding-bottom:70px}
+.socials a{width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.25);display:grid;place-items:center}
+.socials a:hover{background:rgba(255,255,255,.1)}
+.portrait{position:relative;justify-self:center;max-width:400px;width:100%}
+.portrait::before{content:"";position:absolute;left:12%;right:-4%;top:14%;bottom:0;background:var(--blue);border-radius:200px 200px 0 0}
+.portrait img{position:relative}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.socials{padding-bottom:10px}.portrait{max-width:300px}}
+
+/* intro */
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.point{background:var(--card);border-radius:var(--r);padding:28px;box-shadow:var(--shadow)}
+.ico{width:48px;height:48px;border-radius:14px;background:#eef0f8;color:var(--blue);display:grid;place-items:center;margin-bottom:16px}
+@media(max-width:820px){.points{grid-template-columns:1fr}}
+
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:center;margin-top:56px}
+.about-photo{height:auto;border-radius:var(--r);box-shadow:var(--shadow);width:100%;aspect-ratio:1;object-fit:cover;object-position:50% 25%}
+.awards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.awards button{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;cursor:zoom-in;font:inherit;text-align:left;color:var(--ink)}
+.awards img{width:46px;height:62px;object-fit:cover;border-radius:6px;flex:none}
+.awards span{font-size:14px;line-height:1.3;color:var(--muted)}
+.awards b{display:block;color:var(--ink)}
+@media(max-width:820px){.about{grid-template-columns:1fr}.awards{grid-template-columns:1fr}}
+/* services */
+#sluzby{background:#efebe2}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.svc{background:var(--card);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.svc p{color:var(--muted);font-size:15.5px;flex:1;margin:0 0 18px}
+.svc .btn{align-self:flex-start}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}}
+.note{font-size:14px;color:var(--muted);margin-top:22px}
+
+/* claims band */
+.claims{background:var(--blue);color:#fff;border-radius:28px;padding:36px;display:grid;grid-template-columns:1.4fr 1fr;gap:24px;align-items:center;margin-top:56px}
+.claims p{opacity:.9;margin:0}
+.claims .acts{display:flex;flex-direction:column;gap:10px}
+.claims .btn{justify-content:center}
+@media(max-width:820px){.claims{grid-template-columns:1fr}}
+
+/* videos */
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.video{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.vthumb{aspect-ratio:16/9;background:linear-gradient(135deg,var(--navy),var(--blue));position:relative;display:grid;place-items:center;color:#fff;cursor:pointer;border:0;width:100%;padding:0;font:inherit}
+.vthumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85}
+.play{position:relative;width:64px;height:64px;border-radius:50%;background:var(--accent);display:grid;place-items:center;color:var(--navy)}
+.vthumb.soon{cursor:default}
+.vthumb.soon span{position:relative;background:rgba(255,255,255,.12);padding:6px 14px;border-radius:999px;font-size:14px;font-weight:700}
+.vbody{padding:20px 22px 24px}
+.vbody p{color:var(--muted);font-size:15px;margin:0}
+.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vgrid{grid-template-columns:repeat(4,1fr)}
+.video.wide{grid-column:1/-1;display:grid;grid-template-columns:1.6fr 1fr;align-items:center}
+.video.wide .vbody{padding:30px}
+.video.wide h3{font-size:28px}
+.video.short .vthumb{aspect-ratio:9/16}
+@media(max-width:900px){.vgrid{grid-template-columns:1fr 1fr}.video.wide{grid-template-columns:1fr}}
+@media(max-width:420px){.vgrid{gap:12px}.video.short .vbody{padding:14px}.video.short h3{font-size:17px}.video.short .vbody p{font-size:14px}}
+
+/* gallery */
+#galerie{background:#efebe2}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.gal button{border:0;padding:0;border-radius:16px;overflow:hidden;aspect-ratio:1;cursor:zoom-in;background:#ddd;position:relative}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.gal button:hover img{transform:scale(1.04)}
+.gal .ph{aspect-ratio:1;border-radius:16px;border:2px dashed #cfc7b6;background:transparent;display:grid;place-items:center;color:var(--muted);font-size:14px;cursor:default;text-align:center;padding:10px}
+.gal .badge{position:absolute;left:10px;bottom:10px;background:rgba(21,26,45,.8);color:#fff;border-radius:999px;padding:3px 10px;font-size:13px}
+@media(max-width:820px){.gal{grid-template-columns:repeat(2,1fr)}}
+.lb{position:fixed;inset:0;background:rgba(10,12,22,.92);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.lb.open{display:flex}
+.lb img,.lb video{max-width:94vw;max-height:84vh;border-radius:12px}
+.lb figcaption{color:#fff;text-align:center;margin-top:10px}
+.lb .x,.lb .prev,.lb .next{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:48px;height:48px;border-radius:50%;cursor:pointer;font-size:24px}
+.lb.lb-single .prev,.lb.lb-single .next{display:none}
+.lb .x{top:18px;right:18px}.lb .prev{left:18px;top:50%}.lb .next{right:18px;top:50%}
+
+/* branch */
+.branch{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.branch .photo{border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.addr{display:inline-flex;gap:8px;align-items:flex-start;font-weight:700;font-size:18px;text-decoration:none;border-bottom:2px solid var(--accent);padding-bottom:2px;margin-bottom:6px}
+.addr:hover{color:var(--blue)}
+.maplinks{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}
+.hours{background:var(--card);border-radius:18px;border:1px solid var(--line);overflow:hidden}
+.hours div{display:flex;justify-content:space-between;padding:11px 18px;border-bottom:1px solid var(--line);font-size:15.5px}
+.hours div:last-child{border-bottom:0}
+.hours b{font-weight:700}
+.hours .closed{color:var(--muted)}
+.hours .today{background:#fff6e8}
+.status{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;margin-bottom:12px}
+.dot{width:10px;height:10px;border-radius:50%;background:#2e9d5b}
+.dot.off{background:#c0392b}
+.amen{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;color:var(--muted);font-size:14.5px}
+.amen span{display:inline-flex;gap:6px;align-items:center}
+.map{margin-top:40px;border-radius:var(--r);overflow:hidden;aspect-ratio:21/8;background:#e3ddd0;display:grid;place-items:center;text-align:center;padding:20px}
+.map iframe{width:100%;height:100%;border:0}
+@media(max-width:820px){.branch{grid-template-columns:1fr}.map{aspect-ratio:4/3}}
+
+/* contact */
+#kontakt{background:var(--blue);color:#fff}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.clist{list-style:none;padding:0;margin:26px 0}
+.clist li{margin-bottom:14px}
+.clist a{display:inline-flex;gap:12px;align-items:center;text-decoration:none;font-weight:700;font-size:18px}
+.clist a:hover{text-decoration:underline}
+form{background:var(--card);color:var(--ink);border-radius:26px;padding:30px;box-shadow:0 20px 50px rgba(0,0,0,.2)}
+form input,form textarea,form select{width:100%;border:1px solid var(--line);background:var(--cream);border-radius:14px;padding:13px 16px;font:inherit;font-size:16px;margin-bottom:12px;color:var(--ink)}
+form input:focus,form textarea:focus,form select:focus{outline:2px solid var(--blue);border-color:transparent}
+.consent{display:flex;gap:10px;font-size:13.5px;color:var(--muted);margin:4px 0 16px;align-items:flex-start}
+.consent input{width:auto;margin:3px 0 0}
+.hp{position:absolute;left:-9999px}
+form .btn{width:100%;justify-content:center}
+.msg{margin-top:14px;border-radius:14px;padding:14px 16px;font-size:15px;display:none}
+.msg.ok{display:block;background:#e7f5ec;color:#1d6b3e}
+.msg.err{display:block;background:#fdecea;color:#8a2b20}
+@media(max-width:820px){.contact{grid-template-columns:1fr}}
+
+footer{background:var(--navy);color:#c9cbd6;padding:40px 0 110px;font-size:14px}
+footer .wrap{display:grid;gap:12px}
+footer a{color:#fff}
+
+/* mobile bar */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:var(--navy);display:none;grid-template-columns:repeat(3,1fr);padding:8px 8px calc(8px + env(safe-area-inset-bottom))}
+.mbar a{display:flex;flex-direction:column;align-items:center;gap:2px;color:#fff;text-decoration:none;font-size:12.5px;font-weight:700;padding:6px}
+.mbar a:first-child{color:var(--accent2)}
+@media(max-width:820px){.mbar{display:grid}}
+@media(min-width:821px){footer{padding-bottom:40px}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="m3 11 19-9-9 19-2-8-8-2z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 17h14M3 13l2-6h14l2 6v5H3z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 21h14M3 7h18M6 7l-3 7a3 3 0 0 0 6 0zM18 7l-3 7a3 3 0 0 0 6 0z"/></symbol>
+  <symbol id="i-paw" viewBox="0 0 24 24"><circle cx="5" cy="10" r="2"/><circle cx="9" cy="5" r="2"/><circle cx="15" cy="5" r="2"/><circle cx="19" cy="10" r="2"/><path d="M12 12c-3 0-6 4-6 7 0 2 2 2 3 2s2-1 3-1 2 1 3 1 3 0 3-2c0-3-3-7-6-7z"/></symbol>
+  <symbol id="i-piggy" viewBox="0 0 24 24"><path d="M19 9a7 7 0 0 0-7-4c-4 0-8 3-8 7 0 2 1 4 3 5v3h3v-2h4v2h3v-3c1-1 2-2 2-3h2v-4h-2z"/><circle cx="15" cy="10" r=".5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 6-6"/></symbol>
+  <symbol id="i-life" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.9 4.9 4.3 4.3M14.8 14.8l4.3 4.3M14.8 9.2l4.3-4.3M4.9 19.1l4.3-4.3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4v16l13-8z" fill="currentColor"/></symbol>
+  <symbol id="i-kid" viewBox="0 0 24 24"><circle cx="12" cy="6" r="3"/><path d="M8 21v-6l-2-3 3-2h6l3 2-2 3v6"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 24 24"><path d="M5 13a10 10 0 0 1 14 0M8.5 16.5a5 5 0 0 1 7 0M2 9.5a15 15 0 0 1 20 0"/><circle cx="12" cy="20" r="1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 21h14"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#">Jan Kuchyňka</a>
+    <button class="burger" aria-label="Menu" onclick="document.querySelector('.nav ul').classList.toggle('open')"><svg class="i" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <ul onclick="if(event.target.tagName==='A')this.classList.remove('open')">
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#o-mne">O mně</a></li>
+      <li><a href="#videa">Videa</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#pobocka">Pobočka</a></li>
+      <li><a class="btn btn-navy" href="#kontakt">Kontakt</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tags">
+        <span class="tag gold"><svg class="i" style="width:16px;height:16px"><use href="#i-star"/></svg>TOP poradce</span>
+        <span class="tag out"><svg class="i" style="width:16px;height:16px"><use href="#i-clock"/></svg><span data-cfg="praxe"></span></span>
+      </div>
+      <h1>Jan<br>Kuchyňka</h1>
+      <p class="motto">Pojištění má chránit to, na čem vám v životě opravdu záleží – <em>lidsky, srozumitelně a bez háčků.</em></p>
+      <div class="ctas">
+        <a class="btn btn-accent" href="tel:+420608777597"><svg class="i"><use href="#i-phone"/></svg>+420 608 777 597</a>
+        <a class="btn btn-ghost" href="#kontakt"><svg class="i"><use href="#i-cal"/></svg>Sjednat schůzku</a>
+      </div>
+      <div class="socials" id="socials"></div>
+    </div>
+    <div class="portrait"><img src="img/jan-kuchynka.webp" alt="Jan Kuchyňka" width="789" height="1200"></div>
+  </div>
+</section>
+
+<section id="o-mne">
+  <div class="wrap">
+    <div class="eyebrow">Vítám vás</div>
+    <h2>Váš osobní poradce pro pojištění v Olomouci</h2>
+    <p class="lead">Pomáhám klientům chránit zdraví, rodinu, majetek i finance. Specializuji se na občanské pojištění – od vozidel, domů a bytů přes životní a úrazové pojištění až po odpovědnost a cestování.</p>
+    <div class="points">
+      <div class="point"><div class="ico"><svg class="i"><use href="#i-user"/></svg></div><h3>Na míru</h3><p>Připravím nabídku přesně podle vašich aktuálních potřeb. Řeknu vám i to, co pojištění nekryje.</p></div>
+      <div class="point"><div class="ico"><svg class="i"><use href="#i-bolt"/></svg></div><h3>Rychle a pohodlně</h3><p>Osobně na pobočce v Olomouci, nebo kompletně online či po telefonu.</p></div>
+      <div class="point"><div class="ico"><svg class="i"><use href="#i-heart"/></svg></div><h3>Dlouhodobá péče</h3><p>Smlouvou to nekončí – jsem tu i při řešení škody a pravidelné kontrole smluv.</p></div>
+    </div>
+    <div class="about">
+      <img class="about-photo" src="img/jan-portret.webp" alt="Ing. Jan Kuchyňka" width="700" height="626" loading="lazy">
+      <div>
+        <h3 style="font-size:30px">31 let ve finančních službách</h3>
+        <p>Více než 30 let pomáhám lidem s pojištěním, penzijním a stavebním spořením. Za tu dobu jsem viděl spoustu škod a vím, kde mívají smlouvy slabá místa. Proto vám vždy řeknu i to, co pojištění nekryje.</p>
+        <div class="awards">
+          <button onclick="openLbSrc('img/cert-top-klub-2007.webp','Člen TOP klubu 2007')"><img src="img/cert-top-klub-2007-nahled.webp" alt=""><span><b>Člen TOP klubu</b>2007</span></button>
+          <button onclick="openLbSrc('img/cert-obchodnik-roku-2008.webp','Obchodník roku 2008')"><img src="img/cert-obchodnik-roku-2008-nahled.webp" alt=""><span><b>Obchodník roku</b>2008</span></button>
+          <button onclick="openLbSrc('img/oceneni-kvality-2017.webp','Ocenění kvality 2017 pro obchodní místo Krapkova 1159/3')"><img src="img/oceneni-kvality-2017-nahled.webp" alt=""><span><b>Ocenění kvality pobočky</b>2017</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sluzby">
+  <div class="wrap">
+    <div class="eyebrow">Služby</div>
+    <h2>S čím vám poradím</h2>
+    <p class="lead">Pojištění, penze i investice. Většinu si můžete sjednat rovnou online, nebo to vyřešíme spolu.</p>
+    <div class="grid" id="svcGrid"></div>
+    <p class="note">Tlačítko „Sjednat“ otevře online sjednání u Generali České pojišťovny, kde je uvedeno moje jméno jako poradce. Pokud si nejste jistí, raději mi zavolejte – projdeme to spolu.</p>
+
+    <div class="claims">
+      <div>
+        <h3 style="font-size:26px"><svg class="i" style="vertical-align:-3px"><use href="#i-alert"/></svg> Stala se škoda?</h3>
+        <p>Škodu můžete nahlásit online nebo na klientské lince pojišťovny. A když si nevíte rady, zavolejte mně – poradím, co nafotit a jaké doklady připravit.</p>
+      </div>
+      <div class="acts">
+        <a class="btn btn-accent" href="https://reseniskody.generaliceska.cz/" target="_blank" rel="noopener">Nahlásit škodu online</a>
+        <a class="btn btn-ghost" href="tel:+420241114114"><svg class="i"><use href="#i-phone"/></svg>Linka škod 241 114 114</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="videa">
+  <div class="wrap">
+    <div class="eyebrow">Instruktážní videa</div>
+    <h2>Vysvětlím to za pár minut</h2>
+    <p class="lead">Krátká videa o tom, jak jednotlivá pojištění fungují a na co si dát pozor. Další připravuji.</p>
+    <div class="vgrid" id="vGrid"></div>
+  </div>
+</section>
+
+<section id="galerie">
+  <div class="wrap">
+    <div class="eyebrow">Fotogalerie</div>
+    <h2>Fotky a videa</h2>
+    <p class="lead">Pobočka, akce pro klienty a momenty z mé práce.</p>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<section id="pobocka">
+  <div class="wrap">
+    <div class="branch">
+      <div class="photo"><img src="img/pobocka.webp" alt="Kancelář na Krapkově ulici v Olomouci" width="560" height="560" loading="lazy"></div>
+      <div>
+        <div class="eyebrow">Pobočka</div>
+        <h2>Kde mě najdete</h2>
+        <a class="addr" id="addrLink" href="#" target="_blank" rel="noopener"><svg class="i" style="color:var(--accent);margin-top:3px"><use href="#i-pin"/></svg>Krapkova 1159/3, Olomouc</a>
+        <div style="color:var(--muted)">v přízemí vlevo</div>
+        <div class="maplinks">
+          <a class="btn btn-line" id="mapyLink" href="#" target="_blank" rel="noopener"><svg class="i"><use href="#i-nav"/></svg>Mapy.cz</a>
+          <a class="btn btn-line" id="gmapsLink" href="#" target="_blank" rel="noopener"><svg class="i"><use href="#i-nav"/></svg>Google Maps</a>
+        </div>
+        <div class="status" id="status"></div>
+        <div class="hours" id="hours"></div>
+        <p class="note" style="margin-top:10px">Otevírací doba se může v jednotlivých týdnech měnit – pro jistotu se předem ozvěte.</p>
+        <div class="amen">
+          <span><svg class="i"><use href="#i-kid"/></svg>Dětský koutek</span>
+          <span><svg class="i"><use href="#i-card"/></svg>Platba kartou</span>
+          <span><svg class="i"><use href="#i-wifi"/></svg>Wi-Fi</span>
+        </div>
+      </div>
+    </div>
+    <div class="map" id="map">
+      <div>
+        <p style="margin:0 0 14px;color:var(--muted)">Mapa se načte z Google Maps až po kliknutí.</p>
+        <button class="btn btn-navy" onclick="loadMap()"><svg class="i"><use href="#i-pin"/></svg>Zobrazit mapu</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <div class="wrap contact">
+    <div>
+      <div class="eyebrow" style="color:var(--accent2)">Kontakt</div>
+      <h2 style="color:#fff">Domluvme si schůzku</h2>
+      <p style="opacity:.9;font-size:18px">Zavolejte, napište, nebo vyplňte formulář. Ozvu se vám co nejdříve.</p>
+      <ul class="clist">
+        <li><a href="tel:+420608777597"><svg class="i"><use href="#i-phone"/></svg>+420 608 777 597</a></li>
+        <li><a href="mailto:jan.kuchynka@generaliceska.cz"><svg class="i"><use href="#i-mail"/></svg>jan.kuchynka@generaliceska.cz</a></li>
+        <li><a class="addrLink2" href="#" target="_blank" rel="noopener"><svg class="i"><use href="#i-pin"/></svg>Krapkova 1159/3, Olomouc</a></li>
+      </ul>
+      <a class="btn btn-ghost" id="vcard" href="#"><svg class="i"><use href="#i-down"/></svg>Uložit kontakt do telefonu</a>
+    </div>
+    <form id="form" novalidate>
+      <h3 style="font-size:26px">Napište mi zprávu</h3>
+      <p style="color:var(--muted);margin-top:0">Zpráva mi přijde rovnou do e-mailu.</p>
+      <input name="jmeno" required placeholder="Jméno a příjmení *" autocomplete="name">
+      <input name="email" type="email" required placeholder="Váš e-mail *" autocomplete="email">
+      <input name="telefon" type="tel" placeholder="Telefon (nepovinné)" autocomplete="tel">
+      <select name="tema">
+        <option value="">O co máte zájem? (nepovinné)</option>
+        <option>Pojištění auta</option><option>Pojištění domu, bytu, domácnosti</option><option>Životní a úrazové pojištění</option>
+        <option>Cestovní pojištění</option><option>Penzijní spoření / investice</option><option>Řešení škody</option><option>Kontrola stávajících smluv</option><option>Jiné</option>
+      </select>
+      <textarea name="zprava" rows="4" required placeholder="S čím vám mohu pomoci? *"></textarea>
+      <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" name="souhlas" required> <span>Souhlasím se zpracováním uvedených údajů za účelem odpovědi na můj dotaz. Údaje nepředávám dál a po vyřízení dotazu je nepoužiji k jinému účelu.</span></label>
+      <button class="btn btn-accent" type="submit" id="sendBtn">Odeslat dotaz</button>
+      <div class="msg" id="msg"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b style="color:#fff">Ing. Jan Kuchyňka</b> · pojišťovací poradce · Krapkova 1159/3, Olomouc · <a href="tel:+420608777597">+420 608 777 597</a></div>
+    <div data-cfg="pravniInfo"></div>
+    <div>© <span id="yr"></span> Jan Kuchyňka</div>
+  </div>
+</footer>
+
+<nav class="mbar">
+  <a href="tel:+420608777597"><svg class="i"><use href="#i-phone"/></svg>Zavolat</a>
+  <a href="#kontakt"><svg class="i"><use href="#i-mail"/></svg>Napsat</a>
+  <a class="navLink" href="#" target="_blank" rel="noopener"><svg class="i"><use href="#i-nav"/></svg>Navigovat</a>
+</nav>
+
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()">
+  <button class="x" onclick="closeLb()" aria-label="Zavřít">×</button>
+  <button class="prev" onclick="stepLb(-1)" aria-label="Předchozí">‹</button>
+  <figure style="margin:0"><div id="lbMedia"></div><figcaption id="lbCap"></figcaption></figure>
+  <button class="next" onclick="stepLb(1)" aria-label="Další">›</button>
+</div>
+
+<script>
+/* ==========================================================
+   NASTAVENÍ – tady se mění obsah webu
+   ========================================================== */
+const NASTAVENI = {
+  praxe: "31 let praxe",
+  email: "jan.kuchynka@generaliceska.cz",
+  // Formulář: služba FormSubmit pošle zprávu na e-mail výše. Při prvním odeslání přijde
+  // na tento e-mail jednorázová žádost o aktivaci – stačí v ní kliknout na tlačítko.
+  formular: "https://formsubmit.co/ajax/jan.kuchynka@generaliceska.cz",
+  adresa: "Krapkova 1159/3, 779 00 Olomouc",
+  socialni: {
+    facebook: "https://www.facebook.com/jan.kuchynka.98",
+    instagram: "https://www.instagram.com/jan.kuchynka",
+    linkedin: "https://www.linkedin.com/in/jan-kuchy%C5%88ka-72475356"
+  },
+  pravniInfo: "Ing. Jan Kuchyňka, IČO 65910079 – vázaný zástupce Generali České pojišťovny a.s. (IČO 45272956), zapsaný v registru ČNB. Nabízím pouze produkty této pojišťovny.",
+  hodiny: [ // Po..Ne, null = zavřeno
+    ["Pondělí","08:00","17:00"],["Úterý","08:00","17:00"],["Středa","08:00","16:30"],
+    ["Čtvrtek","07:30","18:00"],["Pátek","08:00","16:00"],["Sobota",null],["Neděle",null]
+  ],
+  // Galerie: typ "foto" nebo "video" (mp4 soubor), soubory nahrát do složky img/
+  galerie: [
+    { typ:"foto", soubor:"img/kancelar.webp", nahled:"img/kancelar-nahled.webp", popis:"Vítejte v kanceláři na Krapkově 3" },
+    { typ:"foto", soubor:"img/oceneni-kvality-2017.webp", nahled:"img/oceneni-kvality-2017-nahled.webp", popis:"Ocenění kvality 2017 pro obchodní místo Krapkova 1159/3" },
+    { typ:"foto", soubor:"img/pobocka.webp", popis:"Vchod do pobočky na Krapkově ulici" },
+    { typ:"foto", soubor:"img/cert-obchodnik-roku-2008.webp", nahled:"img/cert-obchodnik-roku-2008-nahled.webp", popis:"Obchodník roku 2008" },
+    { typ:"foto", soubor:"img/cert-top-klub-2007.webp", nahled:"img/cert-top-klub-2007-nahled.webp", popis:"Člen TOP klubu 2007" },
+    { typ:"foto", soubor:"img/jan-portret.webp", popis:"Jan Kuchyňka" },
+  ],
+  zobrazitMistaNaFotky: false, // true = ukáže prázdná místa na další fotky
+  // Videa: youtube = ID videa (část adresy za youtu.be/ nebo shorts/), short:true = svislé video
+  videa: [
+    { nazev:"Havarijní pojištění vozidel", popis:"Jak chrání vaše auto i v situacích, které povinné ručení nepokryje.", youtube:"b00pUm9B4Z0" },
+    { nazev:"Podpojištění majetku", popis:"Proč aktualizovat pojistky na domy a byty.", youtube:"P6PZj_CSzUo", short:true },
+    { nazev:"Indexace smluv", popis:"Pozvání na kontrolu a aktualizaci smluv.", youtube:"EEwUE9UBLXQ", short:true },
+    { nazev:"Jedna smlouva vás neochrání", popis:"Proč nestačí mít jen jedno pojištění.", youtube:"gcKKg2AwUBc", short:true },
+    { nazev:"Pozvánka na pobočku", popis:"Kde nás najdete na Krapkově 3 v Olomouci.", youtube:"T-ReIaoerJ0", short:true },
+  ],
+  sluzby: [
+    ["i-plane","Cestovní pojištění","Pomoc při úrazu, nemoci i ztrátě věcí – na víkendovém výletu i na druhém konci světa.","Sjednat","https://www.generaliceska.cz/cestovni-pojisteni-online-sjednani#/?externalSellerID=int-jan-kuchynka"],
+    ["i-car","Povinné ručení","Peníze po nehodě do 5 dnů a za jízdu bez nehod sleva až 60 %.","Sjednat","https://www.generaliceska.cz/povinne-ruceni-online-sjednani?externalSellerId=int-jan-kuchynka"],
+    ["i-shield","Havarijní pojištění","Ochrana vozidla proti škodám vlastním zaviněním, živlem či krádeží.","Sjednat","https://www.generaliceska.cz/havarijni-pojisteni-online-sjednani?externalSellerId=int-jan-kuchynka"],
+    ["i-home","Pojištění majetku","Dům, byt, chata i celá domácnost v bezpečí při škodě nebo krádeži.","Sjednat","https://sjednat.generaliceska.cz/pojisteni-majetku?externalSellerId=int-jan-kuchynka"],
+    ["i-scale","Pojištění odpovědnosti","Když nechtěně způsobíte škodu druhým, pojištění ji uhradí za vás.","Sjednat","https://sjednat.generaliceska.cz/pojisteni-majetku/odpovednost?externalSellerId=int-jan-kuchynka"],
+    ["i-paw","Pojištění mazlíčků","U veterináře je fajn neřešit, kolik to bude stát.","Sjednat","https://sjednat.generaliceska.cz/mazlicek?externalSellerId=int-jan-kuchynka"],
+    ["i-piggy","Penzijní spoření","Jednoduchá správa peněz, zhodnocení vkladů a k tomu státní příspěvek.","Sjednat","https://sjednani.generalipenze.cz/?context=int-jan-kuchynka"],
+    ["i-chart","Investice","Nechte peníze pracovat za vás a zajistěte si klidnější budoucnost.","Mám zájem","#kontakt"],
+    ["i-life","Životní pojištění","Ochrana pro vás i vaše blízké v případě nemoci, úrazu a dalších rizik.","Spočítat","https://sjednat.generaliceska.cz/zivotni-pojisteni?externalSellerID=int-jan-kuchynka"],
+  ]
+};
+
+/* ========================================================== */
+const N = NASTAVENI, $ = s => document.querySelector(s);
+document.querySelectorAll('[data-cfg]').forEach(e => e.textContent = N[e.dataset.cfg]);
+$('#yr').textContent = new Date().getFullYear();
+const icon = id => `<svg class="i"><use href="#${id}"/></svg>`;
+
+// sociální sítě
+const soc = {facebook:'<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+  instagram:'<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+  linkedin:'<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>'};
+$('#socials').innerHTML = Object.entries(N.socialni).filter(([,u])=>u).map(([k,u]) =>
+  `<a href="${u}" target="_blank" rel="noopener" aria-label="${k}"><svg class="i" viewBox="0 0 24 24" style="width:18px;height:18px">${soc[k]}</svg></a>`).join('');
+
+// služby
+$('#svcGrid').innerHTML = N.sluzby.map(([ic,t,d,b,u]) => `<div class="svc"><div class="ico">${icon(ic)}</div><h3>${t}</h3><p>${d}</p>
+  <a class="btn btn-line" href="${u}" ${u.startsWith('http')?'target="_blank" rel="noopener"':''} ${u==='#kontakt'?'onclick="pickTopic(\'Penzijní spoření / investice\')"':''}>${b}</a></div>`).join('');
+function pickTopic(t){ const s=document.querySelector('select[name=tema]'); if(s) s.value=t; }
+
+// mapy
+const q = encodeURIComponent(N.adresa);
+const mapy = `https://mapy.cz/fnc/v1/search?query=${q}`;
+const gmaps = `https://www.google.com/maps/search/?api=1&query=${q}`;
+const gnav = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
+['#addrLink','#mapyLink'].forEach(s => $(s).href = mapy);
+document.querySelector('.addrLink2').href = mapy;
+$('#gmapsLink').href = gmaps;
+document.querySelector('.navLink').href = gnav;
+function loadMap(){ $('#map').style.padding='0'; $('#map').innerHTML = `<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa – Krapkova 3, Olomouc" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>`; }
+
+// otevírací doba
+(function(){
+  const now = new Date(), di = (now.getDay()+6)%7, mins = now.getHours()*60+now.getMinutes();
+  const toM = t => +t.slice(0,2)*60 + +t.slice(3);
+  $('#hours').innerHTML = N.hodiny.map(([d,o,c],i) => `<div class="${i===di?'today':''}"><span>${d}${i===di?' (dnes)':''}</span>${o?`<b>${o} – ${c}</b>`:'<span class="closed">Zavřeno</span>'}</div>`).join('');
+  const [,o,c] = N.hodiny[di]; const open = o && mins>=toM(o) && mins<toM(c);
+  $('#status').innerHTML = open ? `<span class="dot"></span>Teď otevřeno, do ${c}` : `<span class="dot off"></span>Teď zavřeno – zavolejte nebo napište`;
+})();
+
+// vizitka vCard
+$('#vcard').addEventListener('click', e => {
+  e.preventDefault();
+  const v = ['BEGIN:VCARD','VERSION:3.0','N:Kuchyňka;Jan;;Ing.;','FN:Ing. Jan Kuchyňka','TITLE:Pojišťovací poradce',
+    'TEL;TYPE=CELL:+420608777597','EMAIL:'+N.email,'ADR;TYPE=WORK:;;Krapkova 1159/3;Olomouc;;779 00;Česko','URL:'+location.origin,'END:VCARD'].join('\r\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([v],{type:'text/vcard'})); a.download='Jan-Kuchynka.vcf';
+  document.body.appendChild(a); a.click(); a.remove();
+});
+
+// videa
+$('#vGrid').innerHTML = N.videa.map((v,i) => `<div class="video ${v.short?'short':'wide'}">${v.youtube
+  ? `<button class="vthumb" onclick="playYt(this,'${v.youtube}')" aria-label="Přehrát: ${v.nazev}"><img src="https://i.ytimg.com/vi/${v.youtube}/${v.short?'oar2':'hqdefault'}.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.youtube}/hqdefault.jpg'" alt="" loading="lazy"><span class="play">${icon('i-play')}</span></button>`
+  : `<div class="vthumb soon"><span>Video připravuji</span></div>`}
+  <div class="vbody"><h3>${v.nazev}</h3><p>${v.popis}</p></div></div>`).join('');
+function playYt(el,id){ el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Video"></iframe>`; el.onclick=null; }
+
+// galerie + lightbox
+let li = 0;
+const G = N.galerie;
+let gh = G.map((g,i) => `<button onclick="openLb(${i})" aria-label="${g.popis}">${g.typ==='video'
+  ? `<video src="${g.soubor}" muted preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="badge">▶ video</span>`
+  : `<img src="${g.nahled||g.soubor}" alt="${g.popis}" loading="lazy">`}</button>`).join('');
+if (N.zobrazitMistaNaFotky) for (let k=G.length; k<4; k++) gh += `<div class="ph">Místo pro další fotku nebo video</div>`;
+$('#gal').innerHTML = gh;
+function showLb(){ const g=G[li]; $('#lbMedia').innerHTML = g.typ==='video' ? `<video src="${g.soubor}" controls autoplay></video>` : `<img src="${g.soubor}" alt="${g.popis}">`; $('#lbCap').textContent=g.popis; }
+function openLb(i){ li=i; showLb(); $('#lb').classList.remove('lb-single'); $('#lb').classList.add('open'); }
+function openLbSrc(src,cap){ $('#lbMedia').innerHTML=`<img src="${src}" alt="${cap}">`; $('#lbCap').textContent=cap; $('#lb').classList.add('lb-single','open'); }
+function closeLb(){ $('#lb').classList.remove('lb-single');  $('#lb').classList.remove('open'); $('#lbMedia').innerHTML=''; }
+function stepLb(d){ li=(li+d+G.length)%G.length; showLb(); }
+document.addEventListener('keydown', e => { if(!$('#lb').classList.contains('open')) return; if(e.key==='Escape')closeLb(); if(e.key==='ArrowLeft')stepLb(-1); if(e.key==='ArrowRight')stepLb(1); });
+
+// formulář – odeslání přímo z webu
+const form = $('#form'), msg = $('#msg');
+function mailtoFallback(d){
+  const body = `Jméno: ${d.jmeno}\nE-mail: ${d.email}\nTelefon: ${d.telefon||''}\nTéma: ${d.tema||''}\n\n${d.zprava}`;
+  return `mailto:${N.email}?subject=${encodeURIComponent('Dotaz z webu – '+d.jmeno)}&body=${encodeURIComponent(body)}`;
+}
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  msg.className='msg';
+  if (!form.checkValidity()) { msg.className='msg err'; msg.textContent='Vyplňte prosím jméno, platný e-mail, zprávu a potvrďte souhlas.'; return; }
+  const d = Object.fromEntries(new FormData(form));
+  if (d._honey) return;
+  const btn = $('#sendBtn'); btn.disabled = true; btn.textContent = 'Odesílám…';
+  try {
+    const r = await fetch(N.formular, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ Jméno:d.jmeno, Email:d.email, Telefon:d.telefon, Téma:d.tema, Zpráva:d.zprava,
+        _subject:'Dotaz z webu – '+d.jmeno, _replyto:d.email, _template:'table', _captcha:'false' }) });
+    const j = await r.json().catch(()=>({}));
+    if (!r.ok || j.success === 'false' || j.success === false) throw new Error(j.message||'chyba');
+    form.reset(); msg.className='msg ok'; msg.textContent='Děkuji, zpráva odešla. Ozvu se vám co nejdříve.';
+  } catch(err) {
+    msg.className='msg err';
+    msg.innerHTML = `Zprávu se teď nepodařilo odeslat. Zavolejte mi prosím na <a href="tel:+420608777597">608 777 597</a>, nebo <a href="${mailtoFallback(d)}">odešlete ji e-mailem</a>.`;
+  } finally { btn.disabled=false; btn.textContent='Odeslat dotaz'; }
+});
+</script>
+</body>
+</html>
