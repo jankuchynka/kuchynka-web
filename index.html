@@ -425,10 +425,8 @@ footer a{color:#fff}
 const NASTAVENI = {
   praxe: "31 let praxe",
   email: "jan.kuchynka@generaliceska.cz",
-  // Formulář: služba Web3Forms (zdarma). Klíč (Access Key) se získá na web3forms.com
-  // zadáním e-mailu, kam mají zprávy chodit. E-mail se v kódu webu nezobrazí.
-  // Prázdný klíč = formulář otevře návštěvníkovi předvyplněný e-mail.
-  formularKlic: "",
+  // Formulář: služba FormSubmit. Po aktivaci lze e-mail nahradit náhodným kódem z aktivačního e-mailu.
+  formular: "https://formsubmit.co/ajax/jkuchynka@gmail.com",
   adresa: "Krapkova 1159/3, 779 00 Olomouc",
   socialni: {
     facebook: "https://www.facebook.com/jan.kuchynka.98",
@@ -553,14 +551,12 @@ form.addEventListener('submit', async e => {
   const d = Object.fromEntries(new FormData(form));
   if (d._honey) return;
   const btn = $('#sendBtn'); btn.disabled = true; btn.textContent = 'Odesílám…';
-  if (!N.formularKlic) { btn.disabled=false; btn.textContent='Odeslat dotaz'; location.href = mailtoFallback(d);
-    msg.className='msg ok'; msg.textContent='Otevřel se vám e-mail se zprávou – stačí ho odeslat.'; return; }
   try {
-    const r = await fetch('https://api.web3forms.com/submit', { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({ access_key:N.formularKlic, subject:'Dotaz z webu – '+d.jmeno, from_name:'Web Jan Kuchyňka',
-        name:d.jmeno, email:d.email, Telefon:d.telefon||'-', Téma:d.tema||'-', message:d.zprava, botcheck:'' }) });
+    const r = await fetch(N.formular, { method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body: JSON.stringify({ Jméno:d.jmeno, Email:d.email, Telefon:d.telefon||'-', Téma:d.tema||'-', Zpráva:d.zprava,
+        _subject:'Dotaz z webu – '+d.jmeno, _replyto:d.email, _template:'table', _captcha:'false' }) });
     const j = await r.json().catch(()=>({}));
-    if (!r.ok || !j.success) throw new Error(j.message||'chyba');
+    if (!r.ok || String(j.success) !== 'true') throw new Error(j.message||'chyba');
     form.reset(); msg.className='msg ok'; msg.textContent='Děkuji, zpráva odešla. Ozvu se vám co nejdříve.';
   } catch(err) {
     msg.className='msg err';
