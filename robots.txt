@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kuchynka.eu/sitemap.xml

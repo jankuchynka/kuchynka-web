@@ -10,12 +10,16 @@
 <meta property="og:title" content="Jan Kuchyňka – osobní poradce pro pojištění, Olomouc">
 <meta property="og:description" content="Pojištění má chránit to, na čem vám v životě opravdu záleží – lidsky, srozumitelně a bez háčků.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/jan-kuchynka.webp">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<meta property="og:image" content="https://kuchynka.eu/img/jan-portret.webp">
+<meta property="og:url" content="https://kuchynka.eu/">
+<link rel="canonical" href="https://kuchynka.eu/">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="fonts/fonts.css">
+<script data-goatcounter="https://kuchynka.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"InsuranceAgency","name":"Jan Kuchyňka – pojišťovací poradce","image":"img/jan-kuchynka.webp","telephone":"+420608777597","email":"jan.kuchynka@generaliceska.cz",
+{"@context":"https://schema.org","@type":"InsuranceAgency","name":"Jan Kuchyňka – pojišťovací poradce","url":"https://kuchynka.eu/","image":"https://kuchynka.eu/img/jan-portret.webp","telephone":"+420608777597","email":"jan.kuchynka@generaliceska.cz",
 "address":{"@type":"PostalAddress","streetAddress":"Krapkova 1159/3","addressLocality":"Olomouc","postalCode":"779 00","addressCountry":"CZ"},
 "openingHoursSpecification":[
 {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday"],"opens":"08:00","closes":"17:00"},
@@ -185,6 +189,7 @@ form input,form textarea,form select{width:100%;border:1px solid var(--line);bac
 form input:focus,form textarea:focus,form select:focus{outline:2px solid var(--blue);border-color:transparent}
 .consent{display:flex;gap:10px;font-size:13.5px;color:var(--muted);margin:4px 0 16px;align-items:flex-start}
 .consent input{width:auto;margin:3px 0 0}
+.consent a{color:var(--blue)}
 .hp{position:absolute;left:-9999px}
 form .btn{width:100%;justify-content:center}
 .msg{margin-top:14px;border-radius:14px;padding:14px 16px;font-size:15px;display:none}
@@ -390,7 +395,7 @@ footer a{color:#fff}
       </select>
       <textarea name="zprava" rows="4" required placeholder="S čím vám mohu pomoci? *"></textarea>
       <input class="hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <label class="consent"><input type="checkbox" name="souhlas" required> <span>Souhlasím se zpracováním uvedených údajů za účelem odpovědi na můj dotaz. Údaje nepředávám dál a po vyřízení dotazu je nepoužiji k jinému účelu.</span></label>
+      <label class="consent"><input type="checkbox" name="souhlas" required> <span>Beru na vědomí, že uvedené údaje použijete k odpovědi na můj dotaz. Více v <a href="ochrana-osobnich-udaju.html" target="_blank">zásadách ochrany osobních údajů</a>.</span></label>
       <button class="btn btn-accent" type="submit" id="sendBtn">Odeslat dotaz</button>
       <div class="msg" id="msg"></div>
     </form>
@@ -401,7 +406,7 @@ footer a{color:#fff}
   <div class="wrap">
     <div><b style="color:#fff">Ing. Jan Kuchyňka</b> · pojišťovací poradce · Krapkova 1159/3, Olomouc · <a href="tel:+420608777597">+420 608 777 597</a></div>
     <div data-cfg="pravniInfo"></div>
-    <div>© <span id="yr"></span> Jan Kuchyňka</div>
+    <div>© <span id="yr"></span> Jan Kuchyňka · <a href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a></div>
   </div>
 </footer>
 
