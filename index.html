@@ -140,6 +140,12 @@ header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.92);backdro
 @media(max-width:900px){.vwide{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.vwide{grid-template-columns:1fr}.vshorts .video{flex-basis:200px}}
 .vhint{font-size:14px;color:var(--muted);margin:6px 0 0}
+.vchips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.vchips button{font:inherit;font-size:15px;font-weight:700;border:2px solid var(--navy);background:transparent;color:var(--navy);border-radius:999px;padding:8px 16px;cursor:pointer}
+.vchips button span{opacity:.6;font-weight:500;margin-left:4px}
+.vchips button[aria-selected="true"]{background:var(--navy);color:#fff}
+.vchips + .vshorts{margin-top:22px}
+@media(max-width:600px){.vchips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.vchips button{flex:none}}
 
 /* gallery */
 #galerie{background:#efebe2}
@@ -326,6 +332,7 @@ footer a{color:#fff}
     <div class="eyebrow">Instruktážní videa</div>
     <h2>Vysvětlím to za pár minut</h2>
     <p class="lead">Krátká videa o tom, jak jednotlivá pojištění fungují a na co si dát pozor. Další připravuji.</p>
+    <div class="vchips" id="vChips" role="tablist" aria-label="Kategorie videí"></div>
     <div class="vshorts" id="vShorts"></div>
     <p class="vhint">Krátká videa posunete do strany ←→</p>
     <div class="vwide" id="vWide"></div>
@@ -458,15 +465,25 @@ const NASTAVENI = {
   ],
   zobrazitMistaNaFotky: false, // true = ukáže prázdná místa na další fotky
   // Videa: youtube = ID videa (část adresy za youtu.be/ nebo shorts/), short:true = svislé video
+  // kat = kategorie (musí odpovídat názvu v seznamu kategorieVidei)
+  kategorieVidei: ["Auto","Bydlení a majetek","Odpovědnost","Penze a spoření","Kontrola smluv","O mně a pobočce"],
   videa: [
-    { nazev:"Podpojištění majetku", popis:"Proč aktualizovat pojistky na domy a byty.", youtube:"P6PZj_CSzUo", short:true },
-    { nazev:"Aktualizace smluv", popis:"Proč se vyplatí smlouvy čas od času projít.", youtube:"ro7_csd9Ri0", short:true },
-    { nazev:"Indexace smluv", popis:"Pozvání na kontrolu a aktualizaci smluv.", youtube:"EEwUE9UBLXQ", short:true },
-    { nazev:"Jedna smlouva vás neochrání", popis:"Proč nestačí mít jen jedno pojištění.", youtube:"gcKKg2AwUBc", short:true },
-    { nazev:"Pozvánka na pobočku", popis:"Kde nás najdete na Krapkově 3 v Olomouci.", youtube:"T-ReIaoerJ0", short:true },
-    { nazev:"Havarijní pojištění vozidel", popis:"Jak chrání vaše auto i v situacích, které povinné ručení nepokryje.", youtube:"b00pUm9B4Z0" },
-    { nazev:"Předdůchod z penzijního spoření", popis:"Jak využít naspořené peníze dřív než v důchodu.", youtube:"3m-a47QK_6g" },
-    { nazev:"Poděkování klientům za 20 let spolupráce", popis:"Děkuji všem, kteří mi léta důvěřují.", youtube:"gQ5XJxIZQNM" },
+    { kat:"Bydlení a majetek", nazev:"Podpojištění majetku", popis:"Proč aktualizovat pojistky na domy a byty.", youtube:"P6PZj_CSzUo", short:true },
+    { kat:"Kontrola smluv", nazev:"Aktualizace smluv", popis:"Proč se vyplatí smlouvy čas od času projít.", youtube:"ro7_csd9Ri0", short:true },
+    { kat:"Kontrola smluv", nazev:"Indexace smluv", popis:"Pozvání na kontrolu a aktualizaci smluv.", youtube:"EEwUE9UBLXQ", short:true },
+    { kat:"Kontrola smluv", nazev:"Jedna smlouva vás neochrání", popis:"Proč nestačí mít jen jedno pojištění.", youtube:"gcKKg2AwUBc", short:true },
+    { kat:"O mně a pobočce", nazev:"Pozvánka na pobočku", popis:"Kde nás najdete na Krapkově 3 v Olomouci.", youtube:"T-ReIaoerJ0", short:true },
+    { kat:"Auto", nazev:"Havarijní pojištění vozidel", popis:"Jak chrání vaše auto i v situacích, které povinné ručení nepokryje.", youtube:"b00pUm9B4Z0" },
+    { kat:"Auto", nazev:"Povinné ručení", popis:"Zákonné pojištění vozidel a co dalšího se k němu vyplatí.", youtube:"fcg8wuh9-ek" },
+    { kat:"Auto", nazev:"Konec zelených karet", popis:"Jak potopit pojišťováka aneb co se změnilo u zelených karet.", youtube:"f3m5EYVkz8M" },
+    { kat:"Bydlení a majetek", nazev:"Pojištění domácnosti", popis:"Co všechno kryje pojištění vybavení bytu nebo domu.", youtube:"M0yCCIZzEbY" },
+    { kat:"Bydlení a majetek", nazev:"Pojištění staveb a bytů", popis:"Co je pojištění nemovitosti a na co si dát pozor.", youtube:"1KaZWJA8g00" },
+    { kat:"Odpovědnost", nazev:"Občanská odpovědnost", popis:"Když nechtěně způsobíte škodu druhým.", youtube:"gskWeVhzMug" },
+    { kat:"Odpovědnost", nazev:"Odpovědnost zaměstnance", popis:"Pojištění pro případ škody, kterou způsobíte zaměstnavateli.", youtube:"qMjdjdcwss8" },
+    { kat:"Penze a spoření", nazev:"Předdůchod z penzijního spoření", popis:"Jak využít naspořené peníze dřív než v důchodu.", youtube:"3m-a47QK_6g" },
+    { kat:"O mně a pobočce", nazev:"Poděkování klientům za 20 let spolupráce", popis:"Děkuji všem, kteří mi léta důvěřují.", youtube:"gQ5XJxIZQNM" },
+    { kat:"O mně a pobočce", nazev:"Jsme teď Generali Česká pojišťovna", popis:"Pobočka Olomouc, Krapkova 3.", youtube:"92k0nlXWvBY" },
+    { kat:"O mně a pobočce", nazev:"Každý z nás je jeden z vás", popis:"Generali Česká pojišťovna.", youtube:"rZWHhgrKtxM" },
   ],
   sluzby: [
     ["i-plane","Cestovní pojištění","Pomoc při úrazu, nemoci i ztrátě věcí – na víkendovém výletu i na druhém konci světa.","Sjednat","https://www.generaliceska.cz/cestovni-pojisteni-online-sjednani#/?externalSellerID=int-jan-kuchynka"],
@@ -533,8 +550,17 @@ const vCard = v => `<div class="video ${v.short?'short':'wide'}">${v.youtube
   ? `<button class="vthumb" onclick="playYt(this,'${v.youtube}')" aria-label="Přehrát: ${v.nazev}"><img src="https://i.ytimg.com/vi/${v.youtube}/${v.short?'oar2':'hqdefault'}.jpg" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/${v.youtube}/hqdefault.jpg'" alt="" loading="lazy"><span class="play">${icon('i-play')}</span></button>`
   : `<div class="vthumb soon"><span>Video připravuji</span></div>`}
   <div class="vbody"><h3>${v.nazev}</h3><p>${v.popis}</p></div></div>`;
-$('#vShorts').innerHTML = N.videa.filter(v=>v.short).map(vCard).join('');
-$('#vWide').innerHTML = N.videa.filter(v=>!v.short).map(vCard).join('');
+function renderVideos(kat){
+  const list = kat ? N.videa.filter(v=>v.kat===kat) : N.videa;
+  const sh = list.filter(v=>v.short), wd = list.filter(v=>!v.short);
+  $('#vShorts').innerHTML = sh.map(vCard).join(''); $('#vShorts').style.display = sh.length ? '' : 'none';
+  $('.vhint').style.display = sh.length > 2 ? '' : 'none';
+  $('#vWide').innerHTML = wd.map(vCard).join(''); $('#vWide').style.display = wd.length ? '' : 'none';
+  document.querySelectorAll('#vChips button').forEach(b=>b.setAttribute('aria-selected', b.dataset.k===(kat||'')));
+}
+$('#vChips').innerHTML = [['','Vše',N.videa.length], ...N.kategorieVidei.map(k=>[k,k,N.videa.filter(v=>v.kat===k).length])]
+  .filter(([,,n])=>n).map(([k,t,n])=>`<button role="tab" data-k="${k}" onclick="renderVideos(this.dataset.k)">${t} <span>${n}</span></button>`).join('');
+renderVideos('');
 function playYt(el,id){ el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Video"></iframe>`; el.onclick=null; }
 
 // galerie + lightbox
