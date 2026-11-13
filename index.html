@@ -131,14 +131,18 @@ header{position:sticky;top:0;z-index:50;background:rgba(246,243,236,.92);backdro
 .vbody p{color:var(--muted);font-size:15px;margin:0}
 .vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vshorts{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 14px;margin-top:40px}
-.vshorts .video{flex:0 0 210px;scroll-snap-align:start}
+.vshorts .video{flex:0 0 160px;scroll-snap-align:start}
 .video.short .vthumb{aspect-ratio:9/16}
-.video.short .vbody{padding:14px 16px 18px}
-.video.short h3{font-size:18px}
-.video.short .vbody p{font-size:14px}
-.vwide{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
-@media(max-width:900px){.vwide{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.vwide{grid-template-columns:1fr}.vshorts .video{flex-basis:200px}}
+.video.short .vbody{padding:10px 12px 14px}
+.video.short h3{font-size:15px;margin-bottom:4px}
+.video.short .vbody p{font-size:13px;line-height:1.4}
+.vwide{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+.vwide .vbody{padding:12px 14px 16px}
+.vwide h3{font-size:16px;margin-bottom:4px}
+.vwide .vbody p{font-size:13px;line-height:1.4}
+.vthumb .play{width:48px;height:48px}
+@media(max-width:900px){.vwide{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.vwide{grid-template-columns:1fr 1fr;gap:10px}.vshorts .video{flex-basis:130px}.vshorts{gap:10px}.vwide .vbody p,.video.short .vbody p{display:none}.vwide h3,.video.short h3{font-size:14px}.vthumb .play{width:40px;height:40px}}
 .vhint{font-size:14px;color:var(--muted);margin:6px 0 0}
 .vchips{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
 .vchips button{font:inherit;font-size:15px;font-weight:700;border:2px solid var(--navy);background:transparent;color:var(--navy);border-radius:999px;padding:8px 16px;cursor:pointer}
@@ -554,13 +558,14 @@ function renderVideos(kat){
   const list = kat ? N.videa.filter(v=>v.kat===kat) : N.videa;
   const sh = list.filter(v=>v.short), wd = list.filter(v=>!v.short);
   $('#vShorts').innerHTML = sh.map(vCard).join(''); $('#vShorts').style.display = sh.length ? '' : 'none';
-  $('.vhint').style.display = sh.length > 2 ? '' : 'none';
+  requestAnimationFrame(()=>{ const el=$('#vShorts'); $('.vhint').style.display = sh.length && el.scrollWidth > el.clientWidth + 4 ? '' : 'none'; });
   $('#vWide').innerHTML = wd.map(vCard).join(''); $('#vWide').style.display = wd.length ? '' : 'none';
   document.querySelectorAll('#vChips button').forEach(b=>b.setAttribute('aria-selected', b.dataset.k===(kat||'')));
 }
 $('#vChips').innerHTML = [['','Vše',N.videa.length], ...N.kategorieVidei.map(k=>[k,k,N.videa.filter(v=>v.kat===k).length])]
   .filter(([,,n])=>n).map(([k,t,n])=>`<button role="tab" data-k="${k}" onclick="renderVideos(this.dataset.k)">${t} <span>${n}</span></button>`).join('');
 renderVideos('');
+addEventListener('resize', ()=>{ const el=$('#vShorts'); $('.vhint').style.display = el.offsetParent && el.scrollWidth > el.clientWidth + 4 ? '' : 'none'; });
 function playYt(el,id){ el.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen title="Video"></iframe>`; el.onclick=null; }
 
 // galerie + lightbox
