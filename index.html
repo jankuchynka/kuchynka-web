@@ -690,7 +690,8 @@ const vCard = v => `<div class="video ${v.short?'short':'wide'}">${v.youtube
 function renderVideos(kat){
   const list = kat ? N.videa.filter(v=>v.kat===kat) : N.videa;
   $('#vStrip').innerHTML = list.map(vCard).join(''); $('#vStrip').scrollLeft = 0;
-  $('#vCount').textContent = list.length > 1 ? `${list.length} videí – posuňte do strany ←→` : '';
+  const n=list.length, sl=n===1?'video':(n<5?'videa':'videí');
+  requestAnimationFrame(()=>{ const el=$('#vStrip'); $('#vCount').textContent = `${n} ${sl}` + (el.scrollWidth > el.clientWidth + 4 ? ' – posuňte do strany ←→' : ''); vNav(); });
   document.querySelectorAll('#vChips button').forEach(b=>b.setAttribute('aria-selected', b.dataset.k===(kat||'')));
   vNav();
 }
