@@ -679,7 +679,7 @@ const gnav = `https://www.google.com/maps/dir/?api=1&destination=${q}`;
 document.querySelector('.addrLink2').href = mapy;
 $('#gmapsLink').href = gmaps;
 document.querySelector('.navLink').href = gnav;
-function loadMap(){ $('#map').style.padding='0'; $('#map').innerHTML = `<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa – Krapkova 3, Olomouc" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>`; }
+function loadMap(){ track('klik/zobrazit-mapu','Zobrazit mapu'); $('#map').style.padding='0'; $('#map').innerHTML = `<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa – Krapkova 3, Olomouc" src="https://www.google.com/maps?q=${q}&output=embed"></iframe>`; }
 
 // otevírací doba
 (function(){
@@ -691,8 +691,27 @@ function loadMap(){ $('#map').style.padding='0'; $('#map').innerHTML = `<iframe 
 })();
 
 // vizitka vCard
+// ===== Statistiky kliknutí (GoatCounter, bez cookies) =====
+function track(path,title){ try{ if(window.goatcounter && goatcounter.count) goatcounter.count({path:path, title:title||path, event:true}); }catch(e){} }
+const slug = t => (t||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+document.addEventListener('click', e => {
+  const a = e.target.closest('a'); if(!a) return;
+  const h = a.getAttribute('href')||'', where = a.closest('section,header,footer,nav')?.id || a.closest('nav')?.className || '';
+  if (a.closest('.svc')) { const n=a.closest('.svc').querySelector('h3').textContent; return track('sjednat/'+slug(n), 'Sjednat: '+n); }
+  if (h.startsWith('tel:')) return track(h.includes('241114114') ? 'klik/linka-skod' : 'klik/telefon'+(where?'-'+where:''), 'Telefon');
+  if (h.startsWith('mailto:')) return track('klik/email', 'E-mail');
+  if (h.includes('reseniskody')) return track('klik/nahlasit-skodu', 'Nahlásit škodu online');
+  if (h.includes('mapy.cz')) return track('klik/mapy-cz', 'Mapy.cz');
+  if (h.includes('google.com/maps/dir')) return track('klik/navigovat', 'Navigovat');
+  if (h.includes('google.com/maps')) return track('klik/google-maps', 'Google Maps');
+  if (h.includes('facebook.com')) return track('klik/facebook', 'Facebook');
+  if (h.includes('instagram.com')) return track('klik/instagram', 'Instagram');
+  if (h.includes('linkedin.com')) return track('klik/linkedin', 'LinkedIn');
+  if (a.id==='vmYt') return track('klik/youtube-aplikace', 'Otevřít v YouTube');
+  if (h==='#kontakt') return track('klik/sjednat-schuzku'+(where?'-'+where:''), 'Sjednat schůzku / Napsat');
+}, true);
 $('#vcard').addEventListener('click', e => {
-  e.preventDefault();
+  e.preventDefault(); track('klik/ulozit-kontakt','Uložit kontakt');
   const v = ['BEGIN:VCARD','VERSION:3.0','N:Kuchyňka;Jan;;Ing.;','FN:Ing. Jan Kuchyňka','TITLE:Pojišťovací poradce',
     'TEL;TYPE=CELL:+420608777597','EMAIL:'+N.email,'ADR;TYPE=WORK:;;Krapkova 1159/3;Olomouc;;779 00;Česko','URL:'+location.origin,'END:VCARD'].join('\r\n');
   const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([v],{type:'text/vcard'})); a.download='Jan-Kuchynka.vcf';
@@ -705,6 +724,7 @@ const vCard = v => `<div class="video ${v.short?'short':'wide'}">${v.youtube
   : `<div class="vthumb soon"><span>Video připravuji</span></div>`}
   <div class="vbody"><h3>${v.nazev}</h3><p>${v.popis}</p></div></div>`;
 function renderVideos(kat){
+  if (kat) track('videa-kategorie/'+slug(kat),'Kategorie videí: '+kat);
   const list = kat ? N.videa.filter(v=>v.kat===kat) : N.videa;
   $('#vStrip').innerHTML = list.map(vCard).join(''); $('#vStrip').scrollLeft = 0;
   const n=list.length, sl=n===1?'video':(n<5?'videa':'videí');
@@ -725,7 +745,7 @@ function openVideo(id,short,title){
   $('#vmFrame').innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen title="${(title||'Video').replace(/"/g,'')}"></iframe>`;
   $('#vmYt').href = short ? `https://www.youtube.com/shorts/${id}` : `https://youtu.be/${id}`;
   vm.classList.add('open'); document.body.style.overflow='hidden';
-  try{ if(goatcounter&&goatcounter.count) goatcounter.count({path:'video/'+id,title:title,event:true}); }catch(e){}
+  track('video/'+slug(title||id),'Video: '+(title||id));
 }
 function closeVideo(){ $('#vm').classList.remove('open'); $('#vmFrame').innerHTML=''; document.body.style.overflow=''; }
 document.addEventListener('keydown',e=>{ if(e.key==='Escape' && $('#vm').classList.contains('open')) closeVideo(); });
@@ -739,7 +759,7 @@ let gh = G.map((g,i) => `<button onclick="openLb(${i})" aria-label="${g.popis}">
 if (N.zobrazitMistaNaFotky) for (let k=G.length; k<4; k++) gh += `<div class="ph">Místo pro další fotku nebo video</div>`;
 $('#gal').innerHTML = gh;
 function showLb(){ const g=G[li]; $('#lbMedia').innerHTML = g.typ==='video' ? `<video src="${g.soubor}" controls autoplay></video>` : `<img src="${g.soubor}" alt="${g.popis}">`; $('#lbCap').textContent=g.popis; }
-function openLb(i){ li=i; showLb(); $('#lb').classList.remove('lb-single'); $('#lb').classList.add('open'); }
+function openLb(i){ track('foto/'+slug(G[i].popis),'Foto: '+G[i].popis); li=i; showLb(); $('#lb').classList.remove('lb-single'); $('#lb').classList.add('open'); }
 function openLbSrc(src,cap){ $('#lbMedia').innerHTML=`<img src="${src}" alt="${cap}">`; $('#lbCap').textContent=cap; $('#lb').classList.add('lb-single','open'); }
 function closeLb(){ $('#lb').classList.remove('lb-single');  $('#lb').classList.remove('open'); $('#lbMedia').innerHTML=''; }
 function stepLb(d){ li=(li+d+G.length)%G.length; showLb(); }
@@ -764,7 +784,7 @@ form.addEventListener('submit', async e => {
         name:d.jmeno, email:d.email, Telefon:d.telefon||'-', Téma:d.tema||'-', message:d.zprava, botcheck:'' }) });
     const j = await r.json().catch(()=>({}));
     if (!r.ok || !j.success) throw new Error(j.message||'chyba');
-    form.reset(); msg.className='msg ok'; msg.textContent='Děkuji, zpráva odešla. Ozvu se vám co nejdříve.';
+    track('formular/odeslano','Formulář odeslán'); form.reset(); msg.className='msg ok'; msg.textContent='Děkuji, zpráva odešla. Ozvu se vám co nejdříve.';
   } catch(err) {
     msg.className='msg err';
     msg.innerHTML = `Zprávu se teď nepodařilo odeslat. Zavolejte mi prosím na <a href="tel:+420608777597">608 777 597</a>, nebo <a href="${mailtoFallback(d)}">odešlete ji e-mailem</a>.`;
