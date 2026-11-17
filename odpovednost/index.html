@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Pojištění odpovědnosti – sjednání online | Jan Kuchyňka</title>
+<meta http-equiv="refresh" content="3;url=https://sjednat.generaliceska.cz/pojisteni-majetku/odpovednost?externalSellerId=int-jan-kuchynka">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>body{font-family:system-ui,sans-serif;background:#151a2d;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;text-align:center;padding:20px}a{color:#fff;background:#c21b17;padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block;margin-top:14px}small{display:block;margin-top:22px;opacity:.6;font-size:12px}</style>
+</head>
+<body>
+<div>
+<p>Přesměrovávám na online sjednání:<br><strong>Pojištění odpovědnosti</strong></p>
+<a href="https://sjednat.generaliceska.cz/pojisteni-majetku/odpovednost?externalSellerId=int-jan-kuchynka" id="go">Pokračovat ke sjednání</a>
+<small>Jan Kuchyňka – vázaný zástupce, nabízí výhradně produkty skupiny Generali</small>
+</div>
+<script>
+(function(){
+  var dest = document.getElementById('go').href, done = false;
+  function go(){ if(!done){ done = true; location.replace(dest); } }
+  try {
+    var q = new URLSearchParams(location.search);
+    var ref = q.get('utm_source') || q.get('ref') || document.referrer || '';
+    var img = new Image();
+    img.onload = img.onerror = go;
+    img.src = 'https://kuchynka.goatcounter.com/count?p=' + encodeURIComponent('/odpovednost') +
+      '&t=' + encodeURIComponent('Odkaz: Pojištění odpovědnosti') + '&r=' + encodeURIComponent(ref) + '&rnd=' + Math.random();
+  } catch(e) {}
+  setTimeout(go, 700);
+})();
+</script>
+</body>
+</html>
