@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Hodnocení na Facebooku | Jan Kuchyňka</title>
-<meta http-equiv="refresh" content="3;url=https://www.facebook.com/GeneraliCeskaKrapkovaOlomouc/reviews">
+<meta http-equiv="refresh" content="8;url=https://www.facebook.com/GeneraliCeskaKrapkovaOlomouc">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <style>body{font-family:system-ui,sans-serif;background:#151a2d;color:#fff;display:flex;min-height:100vh;align-items:center;justify-content:center;margin:0;text-align:center;padding:20px}a{color:#fff;background:#c21b17;padding:14px 22px;border-radius:10px;text-decoration:none;font-weight:700;display:inline-block;margin-top:14px}small{display:block;margin-top:22px;opacity:.6;font-size:12px}</style>
 </head>
 <body>
 <div>
-<p>Děkuji, že mi pomůžete! Přesměrovávám na:<br><strong>hodnocení na Facebooku</strong><br><small style="opacity:.85;font-size:15px;margin-top:10px">Klikněte na „Ano“ (doporučuji) a napište jednu větu.</small></p>
-<a href="https://www.facebook.com/GeneraliCeskaKrapkovaOlomouc/reviews" id="go">Otevřít hodnocení</a>
+<p>Děkuji, že mi pomůžete! Přesměrovávám na:<br><strong>hodnocení na Facebooku</strong><br><small style="opacity:.85;font-size:15px;margin-top:10px">Na stránce sjeďte k „Podrobnosti“ a klepněte na <b>„Ještě nehodnoceno“</b> (nebo „Recenze“). Pak zvolte „Ano“ a napište jednu větu.</small></p>
+<a href="https://www.facebook.com/GeneraliCeskaKrapkovaOlomouc" id="go">Otevřít hodnocení</a>
 <small>Jan Kuchyňka – vázaný zástupce, nabízí výhradně produkty skupiny Generali</small>
 </div>
 <script>
@@ -23,11 +23,11 @@
     var q = new URLSearchParams(location.search);
     var ref = q.get('utm_source') || q.get('ref') || document.referrer || '';
     var img = new Image();
-    img.onload = img.onerror = go;
+    img.onload = img.onerror = function(){};
     img.src = 'https://kuchynka.goatcounter.com/count?p=' + encodeURIComponent('/recenze') +
       '&t=' + encodeURIComponent('Odkaz: Recenze FB') + '&r=' + encodeURIComponent(ref) + '&rnd=' + Math.random();
   } catch(e) {}
-  setTimeout(go, 700);
+  setTimeout(go, 6000);
 })();
 </script>
 </body>
