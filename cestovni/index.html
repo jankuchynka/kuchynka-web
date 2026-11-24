@@ -22,6 +22,8 @@
   try {
     var q = new URLSearchParams(location.search);
     var ref = q.get('utm_source') || q.get('ref') || document.referrer || '';
+    var skip = false; try { skip = localStorage.getItem('skipgc') === 't'; } catch(e) {}
+    if (skip) { go(); return; }
     var img = new Image();
     img.onload = img.onerror = go;
     img.src = 'https://kuchynka.goatcounter.com/count?p=' + encodeURIComponent('/cestovni') +
